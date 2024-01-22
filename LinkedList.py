@@ -40,16 +40,24 @@ class LinkedList:
 
 
     def insert(self, index, value):
-        newnode = Node(value)
-        leader = self.getnode(index - 1)
-        nextnode = leader.next
-        leader.next = newnode
-        newnode.next = nextnode
+        if index == 0:
+            self.prepend(value)
+        elif index > self.length:
+            self.append(value)
+        else:
+            newnode = Node(value)
+            leader = self.getnode(index - 1)
+            nextnode = leader.next
+            leader.next = newnode
+            newnode.next = nextnode
 
     def remove(self, index):
-        leader = self.getnode(index - 1)
-        removenode = leader.next
-        leader.next = removenode.next
+        if index <= self.length:
+            leader = self.getnode(index - 1)
+            removenode = leader.next
+            leader.next = removenode.next
+        else:
+            print("Index out of range")
 
 
 linkedList = LinkedList(2)
@@ -57,8 +65,14 @@ linkedList.show()
 linkedList.append(3)
 linkedList.show()
 linkedList.prepend(1)
+linkedList.prepend(4)
+linkedList.prepend(5)
 linkedList.show()
 linkedList.insert(1, 4)
 linkedList.show()
 linkedList.remove(2)
+linkedList.show()
+linkedList.insert(99, 11)
+linkedList.show()
+linkedList.remove(32)
 linkedList.show()
