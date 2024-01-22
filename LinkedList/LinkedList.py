@@ -1,7 +1,4 @@
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
+from Node import SingleLLNode as Node
 
 
 class LinkedList:
@@ -56,6 +53,7 @@ class LinkedList:
             leader = self.getnode(index - 1)
             removenode = leader.next
             leader.next = removenode.next
+            self.length -=1
         else:
             print("Index out of range")
 
