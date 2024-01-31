@@ -57,6 +57,21 @@ class LinkedList:
         else:
             print("Index out of range")
 
+    def reverse(self):
+        if self.head.next is None:
+            return self.head
+        else:
+            first = self.head
+            self.tail = self.head
+            second = self.head.next
+            while second is not None:
+                temp = second.next
+                second.next = first
+                first=second
+                second=temp
+            self.head.next = None
+            self.head = first
+
 
 linkedList = LinkedList(2)
 linkedList.show()
@@ -73,4 +88,6 @@ linkedList.show()
 linkedList.insert(99, 11)
 linkedList.show()
 linkedList.remove(32)
+linkedList.show()
+linkedList.reverse()
 linkedList.show()
